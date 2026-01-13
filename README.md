@@ -2,8 +2,6 @@
 
 A native macOS desktop application that centralizes Google Services (Drive, Sheets, Photos, Keep) into a single, unified interface using Electron.
 
-![App Icon](https://github.com/user-attachments/assets/placeholder-icon.png)
-
 ## 🚀 Features
 
 -   **Unified Sidebar**: Quick switching between Google Drive, Sheets, Photos, and Keep.
