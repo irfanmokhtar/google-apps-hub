@@ -1,0 +1,24 @@
+{
+  "name": "google-workspace-hub",
+  "version": "1.0.0",
+  "description": "A native macOS app that centralizes Google Services into a single interface",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.google-hub.app",
+    "productName": "Google Workspace Hub",
+    "mac": {
+      "target": "dmg",
+      "icon": "icon.icns"
+    }
+  }
+}
