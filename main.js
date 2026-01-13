@@ -10,6 +10,7 @@ app.userAgentFallback = USER_AGENT;
 
 // Google service URLs - pointed to app roots
 const SERVICES = {
+    home: 'file://' + path.join(__dirname, 'src', 'home.html'),
     drive: 'https://drive.google.com/drive/my-drive',
     sheets: 'https://docs.google.com/spreadsheets/u/0/?tgif=d',
     photos: 'https://photos.google.com/u/0/',
@@ -22,7 +23,7 @@ const TOP_BAR_HEIGHT = 40; // Height of the draggable top area
 
 let mainWindow;
 let views = {};
-let activeService = 'drive';
+let activeService = 'home'; // Default to home
 
 function createWindow() {
     // Create the main browser window
@@ -49,6 +50,7 @@ function createWindow() {
     Object.keys(SERVICES).forEach(serviceName => {
         const view = new BrowserView({
             webPreferences: {
+                preload: path.join(__dirname, 'preload.js'), // Needed for home page IPC
                 contextIsolation: true,
                 nodeIntegration: false,
                 // Using a persistent partition for session storage
@@ -64,6 +66,9 @@ function createWindow() {
 
         // Handle external links and new window requests
         view.webContents.setWindowOpenHandler(({ url }) => {
+            // If it's the home page sending a local file request, allow it
+            if (url.startsWith('file://')) return { action: 'allow' };
+
             // If it's an external link (non-Google), open in default browser
             if (!url.includes('google.com') && !url.includes('googleapis.com') && !url.includes('gstatic.com')) {
                 shell.openExternal(url);
@@ -77,6 +82,9 @@ function createWindow() {
 
         // Also handle navigation to external sites from within the page
         view.webContents.on('will-navigate', (event, url) => {
+            // Allow file:// navigation (for home page loading)
+            if (url.startsWith('file://')) return;
+
             if (!url.includes('google.com') && !url.includes('googleapis.com') && !url.includes('gstatic.com')) {
                 event.preventDefault();
                 shell.openExternal(url);
