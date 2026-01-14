@@ -2,9 +2,15 @@
 
 A native macOS desktop application that centralizes Google Services (Drive, Sheets, Photos, Keep) into a single, unified interface using Electron.
 
+![App Icon](https://github.com/user-attachments/assets/placeholder-icon.png)
+
 ## 🚀 Features
 
--   **Unified Sidebar**: Quick switching between Google Drive, Sheets, Photos, and Keep.
+-   **Dashboard Homepage**: Starts with a beautiful, tiled dashboard for quick access to all services.
+-   **Smart Navigation**: 
+    -   **Click the "G" Logo** to return to the Homepage at any time.
+    -   **Unified Sidebar** for quick switching between apps.
+    -   **Top Bar Controls**: Dedicated Back and Refresh buttons for easy navigation within services.
 -   **State Persistence**: Each service runs in its own isolated view. Switching tabs preserves your work and navigation state.
 -   **Native Experience**:
     -   Draggable top bar with macOS traffic light controls.
@@ -13,8 +19,7 @@ A native macOS desktop application that centralizes Google Services (Drive, Shee
 -   **Security**:
     -   Implements a modern Chrome User Agent spoofing (Chrome 131) to correctly handle Google Sign-In security checks.
     -   Secure IPC bridge integration.
--   **Smart Navigation**:
-    -   **Back / Refresh** controls in the top bar.
+-   **Link Handling**:
     -   External links (non-Google) automatically open in your default OS browser.
     -   In-app login flows are captured correctly within the main window.
 
@@ -63,12 +68,13 @@ The output file will be located in the `dist/` directory.
 
 ```text
 google-hub/
-├── main.js             # Main Electron process (Window & View management)
+├── main.js             # Main Electron process (Window, View & Navigation management)
 ├── preload.js          # IPC Bridge (Secure communication context)
 ├── src/
 │   ├── index.html      # Main UI layout (Sidebar + Top Bar)
+│   ├── home.html       # Dashboard Homepage
 │   ├── style.css       # Application styling
-│   └── renderer.js     # Frontend logic (Event listeners)
+│   └── renderer.js     # Frontend logic (Event listeners & Navigation)
 ├── package.json        # Dependencies and build configuration
 └── .gitignore          # Git ignore rules
 ```
