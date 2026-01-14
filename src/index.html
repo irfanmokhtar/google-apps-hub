@@ -17,17 +17,13 @@
 
     <!-- App logo/title -->
     <div class="logo-container">
-      <div class="logo">G</div>
+      <!-- Added data-service="home" to make logo clickable as Home button -->
+      <div class="logo nav-item" data-service="home" title="Home">G</div>
     </div>
 
     <!-- Service buttons -->
     <div class="nav-buttons">
-      <button class="nav-btn active" data-service="home" title="Home">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-        </svg>
-        <span class="tooltip">Home</span>
-      </button>
+      <!-- Home button removed, functionality moved to logo -->
 
       <button class="nav-btn" data-service="drive" title="Google Drive">
         <svg viewBox="0 0 24 24" fill="currentColor">
