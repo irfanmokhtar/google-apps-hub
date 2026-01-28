@@ -12,6 +12,7 @@ app.userAgentFallback = USER_AGENT;
 const SERVICES = {
     home: 'file://' + path.join(__dirname, 'src', 'home.html'),
     drive: 'https://drive.google.com/drive/my-drive',
+    docs: 'https://docs.google.com/document/u/0/',
     sheets: 'https://docs.google.com/spreadsheets/u/0/?tgif=d',
     photos: 'https://photos.google.com/u/0/',
     keep: 'https://keep.google.com/u/0/'

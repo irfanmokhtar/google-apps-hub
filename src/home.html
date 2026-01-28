@@ -105,6 +105,10 @@
             box-shadow: 0 12px 30px rgba(66, 133, 244, 0.2);
         }
 
+        .tile[data-service="docs"]:hover {
+            box-shadow: 0 12px 30px rgba(66, 133, 244, 0.2);
+        }
+
         .tile[data-service="sheets"]:hover {
             box-shadow: 0 12px 30px rgba(52, 168, 83, 0.2);
         }
@@ -153,6 +157,14 @@
             <span>Drive</span>
         </div>
 
+        <div class="tile" data-service="docs">
+            <svg viewBox="0 0 24 24" fill="#4285f4">
+                <path
+                    d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+            </svg>
+            <span>Docs</span>
+        </div>
+
         <div class="tile" data-service="sheets">
             <svg viewBox="0 0 24 24" fill="#34a853">
                 <path
@@ -179,17 +191,7 @@
         </div>
     </div>
 
-    <script>
-        // Simple script to handle switching
-        document.querySelectorAll('.tile').forEach(tile => {
-            tile.addEventListener('click', () => {
-                const service = tile.dataset.service;
-                if (window.electronAPI) {
-                    window.electronAPI.switchService(service);
-                }
-            });
-        });
-    </script>
+    <script src="home-renderer.js"></script>
 </body>
 
 </html>
